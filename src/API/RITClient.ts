@@ -59,11 +59,11 @@ export class RITClient {
     /**
      * Access the RIT API to get information about a building.
      */
-    public getBuilding = async (numberCode: string): Promise<APIBuilding | null> => {
+    public getBuilding = async (code: string): Promise<APIBuilding | null> => {
         const response = await this.RITAPI.get(`/buildings`);
         if (response.data.data) {
             const foundBuilding:APIBuilding = response.data.data.find((Building:APIBuilding) => {
-                return Building.building == numberCode
+                return Building.building == code
             })
             return foundBuilding;
         } else {
